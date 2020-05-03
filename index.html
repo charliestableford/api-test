@@ -19,18 +19,20 @@
     const endpoint = 'https://api.github.com/users/charliestableford';
     const userEl = document.querySelector('.user');
 
-userEl.textContent = 'loading...';
-    // this will return a promise
-    const wesPromise = fetch(endpoint);
-    console.log(wesPromise);
-    wesPromise.then(response => {
-        return response.json(); // this returns another promise
-        console.log(response);
-    }).then(data => {
-        console.log(data)
-        console.log(data.location)
-        userEl.textContent = `${data.name} - ${data.location}`;
-    }).catch(handleError);
+    // inital code below, refactoring to async await above.
+
+// userEl.textContent = 'loading...'; // loading state - could put a spinner here
+//     // this will return a promise
+//     const wesPromise = fetch(endpoint);
+//     console.log(wesPromise);
+//     wesPromise.then(response => {
+//         return response.json(); // this returns another promise
+//         console.log(response);
+//     }).then(data => {
+//         console.log(data)
+//         console.log(data.location)
+//         userEl.textContent = `${data.name} - ${data.location}`;
+//     }).catch(handleError);
 
 
   </script>
