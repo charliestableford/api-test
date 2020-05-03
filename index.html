@@ -24,16 +24,13 @@
  
     const response = await fetch(endpoint);
     const data = await response.json();
-
-    wesPromise.then(response => {
-        return response.json(); // this returns another promise
-        console.log(response);
-    }).then(data => {
         console.log(data)
         console.log(data.location)
         userEl.textContent = `${data.name} - ${data.location}`;
-    }).catch(handleError);
     }
+
+    displayUser('charlie');
+    
 
     // inital code below, refactoring to async await above.
 
