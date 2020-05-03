@@ -16,20 +16,25 @@
           console.log(err)
       }
       console.log('it works');
-    const endpoint = 'https://api.github.com/users/charliestableford';
+    const baseEndpoint = 'https://api.github.com';
+    // sub endpoint
+    const usersEndpoint = `${baseEndpoint}/users`;
     const userEl = document.querySelector('.user');
 
     async function displayUser(username){
-        userEl.textContent = 'loading...'; 
- 
-    const response = await fetch(endpoint);
+    userEl.textContent = 'loading...'; 
+        // this is no longer the promise but the response
+        // we are now fetching the user endpoint and the username that was passed in
+        // this allows us to generate the username on the fly
+    const response = await fetch(`${usersEndpoint}/${username}`); // this is a url so no spaces
+    //
     const data = await response.json();
-        console.log(data)
-        console.log(data.location)
-        userEl.textContent = `${data.name} - ${data.location}`;
+    console.log(data)
+    console.log(data.location)
+    userEl.textContent = `${data.name} - ${data.location}`;
     }
-
-    displayUser('charlie');
+    // call on page load
+    displayUser('charliestableford').catch(handleError);
     
 
     // inital code below, refactoring to async await above.
